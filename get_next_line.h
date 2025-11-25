@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:04:01 by apolleux          #+#    #+#             */
-/*   Updated: 2025/11/20 18:07:17 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:03:17 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 *							*
 \***************************/
 size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
+int		ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

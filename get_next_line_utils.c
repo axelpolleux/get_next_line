@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:03:55 by apolleux          #+#    #+#             */
-/*   Updated: 2025/11/19 15:45:30 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:49:43 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,18 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strchr(const char *s, int c)
 {
+	int	i;
+
+	i = 0;
 	while (*s != (char)c && *s)
+	{
 		s++;
+		i++;
+	}
 	if (*s == (char)c)
-		return ((char *)s);
+		return (i);
 	return (0);
 }
 
@@ -37,8 +43,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	if (!s1 || !s2)
-		return (NULL);
+	// if (!s1 || !s2)
+	// 	return (NULL);
 	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!res)
 		return (NULL);
