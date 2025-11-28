@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:04:01 by apolleux          #+#    #+#             */
-/*   Updated: 2025/11/26 17:13:29 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:25:35 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 *	Get Next Line functions	*
 *							*
 \***************************/
-void	free_line(char *line);
-char	*read_line(int fd, char *buffer);
 char	*get_next_line(int fd);
 
 #endif

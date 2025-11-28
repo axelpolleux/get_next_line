@@ -5,54 +5,60 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/16 15:03:58 by apolleux          #+#    #+#             */
-/*   Updated: 2025/11/26 17:32:40 by apolleux         ###   ########.fr       */
+/*   Created: 2025/11/27 15:39:14 by apolleux          #+#    #+#             */
+/*   Updated: 2025/11/28 22:30:25 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdlib.h>
 
-static void	border_line(char **buffer, char **line)
+// void	col_line(char **line, char **buffer)
+// {
+
+// }
+
+void	border_line(char **line, char **buffer)
 {
-	return ;
+	char	*tmp1;
+	char	*tmp2;
+
+	tmp1 = ft_substr(*buffer, 0, ft_strchr(*buffer, '\n'));
+	tmp2 = *buffer;
+	*line = ft_strjoin(*line, tmp1);
+	*buffer = ft_substr(tmp2, ft_strchr(tmp2, '\n') + 1, ft_strlen(tmp2));
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer = NULL;
 	char		*line;
 	int			sz;
 
-	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (0);
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	line = "";
 	if (!buffer)
-		return (0);
-	sz = read(fd, buffer, BUFFER_SIZE);
-	if (!sz)
-		return (0);
+	{
+		buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		if (!buffer)
+			return (0);
+	}
+	else {
+		line = ft_strjoin(buffer, line);
+	}
+	line = ft_substr(buffer, 0, ft_strlen(buffer));
+	while ((ft_strchr(buffer, '\n') == -1) || (ft_strchr(buffer, '\0') == -1))
+	{
+		sz = read(fd, buffer, BUFFER_SIZE);
+		if (!sz)
+			return (0);
+		if ((ft_strchr(buffer, '\n') == -1) || (ft_strchr(buffer, '\0') == -1))
+			line = ft_strjoin(line, buffer);
+	}
 	if (ft_strchr(buffer, '\n'))
-		line = ft_substr(buffer, 0, ft_strchr(buffer, '\n') + 1);
-	else
-		line = ft_substr(buffer, 0, ft_strlen(buffer));
-	if (!line)
-		return (0);
-	free(buffer);
+		border_line(&line, &buffer);
+
+	line[ft_strlen(line)] = '\n';
 	return (line);
 }
-
-/*====================
-VAR :
-line = "monde"
-static buffer = "\0"
-
-======================
-RETURN :
-1- bonjour\n
-2- monde
-
-======================
-FILE :
-bonjour\nmonde\0
-
-====================*/
