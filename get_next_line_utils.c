@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:03:55 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/01 11:07:04 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/12/03 19:17:56 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_strchr(const char *s, int c)
+int	ft_strichr(const char *s, int c)
 {
 	int	i;
 
@@ -44,10 +44,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 
 	if (!s1)
-		return ((char *)s2);
-	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!res)
-		return (NULL);
+	{
+		res = ft_substr(s2, 0, ft_strlen(s2));
+		return (res);
+	}
+	res = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	i = 0;
 	while (s1[i])
 	{
@@ -61,7 +62,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 		j++;
 	}
-	res[i] = '\0';
 	return (res);
 }
 
