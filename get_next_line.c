@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:39:14 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/05 15:31:58 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:34:30 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static char	*read_line(int fd, char *stash)
 {
-	int read_return ;
+	int		read_return ;
 	char	*buffer;
 
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));

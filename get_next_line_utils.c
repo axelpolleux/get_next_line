@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:03:55 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/05 14:58:39 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/12/05 15:35:07 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	copy_len = ft_strlen(s) - start;
 	if (len < copy_len)
 		copy_len = len;
-	// else if (copy_len == 0)
-	// 	return (0);
 	res = (char *)ft_calloc(copy_len + 1, sizeof(char));
 	if (!res)
 		return (0);
