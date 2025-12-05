@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:03:55 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/03 19:17:56 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/12/05 14:58:39 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		res[i] = s1[i];
 		i++;
 	}
+	free((void *)s1);
 	j = 0;
 	while (s2[j])
 	{
