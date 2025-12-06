@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:39:14 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/05 15:34:30 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/12/06 10:51:05 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static char	*read_line(int fd, char *stash)
 		else if (read_return == 0)
 		{
 			free(buffer);
+			stash = NULL;
 			return (stash);
 		}
 		stash = ft_strjoin(stash, buffer);
