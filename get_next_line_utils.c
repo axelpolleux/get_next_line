@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 15:03:55 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/05 15:35:07 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:14:32 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
@@ -27,6 +29,8 @@ int	ft_strichr(const char *s, int c)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (-1);
 	while (*s != (char)c && *s)
 	{
 		s++;

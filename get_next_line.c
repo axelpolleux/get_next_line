@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:39:14 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/06 10:51:05 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/12/08 18:21:37 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,14 @@ static char	*dead_line(char *stash)
 	char	*res;
 
 	res = NULL;
-	if (ft_strichr(stash, '\n') >= 0)
+	if (ft_strichr(stash, '\0') >= 0)
+	{
+		free(stash);
+		return (0);
+	}
+	else if (ft_strichr(stash, '\n') >= 0)
 		res = ft_substr(stash, ft_strichr(stash, '\n') + 1, ft_strlen(stash));
+	free(stash);
 	return (res);
 }
 
@@ -75,6 +81,7 @@ char	*get_next_line(int fd)
 		stash = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		stash = read_line(fd, stash);
 	}
+
 	else if (ft_strichr(stash, '\n') == -1)
 		stash = read_line(fd, stash);
 	line = border_line(stash);
