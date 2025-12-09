@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:39:14 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/09 15:21:04 by apolleux         ###   ########.fr       */
+/*   Updated: 2025/12/09 15:23:07 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,20 @@ static char	*dead_line(char *stash)
 
 char	*get_next_line(int fd)
 {
-	static char	*stash = NULL;
+	static char	*stash[1024];
 	char		*line;
 
 	line = NULL;
 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (0);
-	if (ft_strichr(stash, '\n') == -1)
-		stash = read_line(fd, stash);
-	line = border_line(stash);
-	stash = dead_line(stash);
-	if (stash && stash[0] == '\0')
+	if (ft_strichr(stash[fd], '\n') == -1)
+		stash[fd] = read_line(fd, stash[fd]);
+	line = border_line(stash[fd]);
+	stash[fd] = dead_line(stash[fd]);
+	if (stash[fd] && stash[fd][0] == '\0')
 	{
-		free(stash);
-		stash = NULL;
+		free(stash[fd]);
+		stash[fd] = NULL;
 	}
 	return (line);
 }
