@@ -6,12 +6,11 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 15:39:14 by apolleux          #+#    #+#             */
-/*   Updated: 2025/12/09 15:23:07 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/02/09 10:40:37 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdlib.h>
 
 static char	*read_line(int fd, char *stash)
 {
@@ -42,12 +41,14 @@ static char	*read_line(int fd, char *stash)
 static char	*border_line(char *stash)
 {
 	char	*res;
+	int		nl_idx;
 
 	res = NULL;
 	if (!stash)
 		return (0);
-	if (ft_strichr(stash, '\n') >= 0)
-		res = ft_substr(stash, 0, ft_strichr(stash, '\n') + 1);
+	nl_idx = ft_strichr(stash, '\n');
+	if (nl_idx >= 0)
+		res = ft_substr(stash, 0, nl_idx);
 	else
 		res = ft_substr(stash, 0, ft_strlen(stash));
 	return (res);
